@@ -7,8 +7,10 @@
   to = "/index.html"
   status = 200
 
+# 新重定向规则
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/accelerate/:splat"
   status = 200
   force = true
+  conditions = {Role = "all"}
