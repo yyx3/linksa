@@ -1,135 +1,131 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>链接加速</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #C6E7FF;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链接加速</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #C6E7FF;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 500px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #4A90E2;
-        }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #4A90E2;
+    }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
 
-        button {
-            padding: 10px 20px;
-            background: #4A90E2;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+    button {
+      padding: 10px 20px;
+      background: #4A90E2;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
 
-        button:hover {
-            background: #357ABD;
-        }
+    button:hover {
+      background: #357ABD;
+    }
 
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background: #F9F9F9;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            color: #333;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-        }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #F9F9F9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: #333;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .result span {
-            word-wrap: break-word;
-            word-break: break-all;
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+    .result span {
+      word-wrap: break-word;
+      word-break: break-all;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
 
-        .copy-btn {
-            padding: 10px 20px;
-            background: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            font-size: 14px;
-        }
+    .copy-btn {
+      padding: 10px 20px;
+      background: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-        .copy-btn:hover {
-            background: #43A047;
-        }
-    </style>
+    .copy-btn:hover {
+      background: #43A047;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>文件下载工具</h1>
-        <p>请输入需要加速的文件链接：</p>
-        <input type="text" id="user-input" placeholder="例如：https://dxfg.zeabur.app/">
-        <button onclick="generateLink()">加速</button>
+  <div class="container">
+    <h1>文件下载工具</h1>
+    <p>请输入需要加速的文件链接：</p>
+    <input type="text" id="user-input" placeholder="例如：https://example.com/file.zip">
+    <button onclick="generateLink()">加速</button>
 
-        <div class="result" id="result">
-            <span id="accelerated-link"></span>
-            <button class="copy-btn" onclick="copyToClipboard()">复制链接</button>
-        </div>
+    <div class="result" id="result">
+      <span id="accelerated-link"></span>
+      <button class="copy-btn" onclick="copyToClipboard()">复制链接</button>
     </div>
+  </div>
 
-    <script>
-        function generateLink() {
-            const input = document.getElementById('user-input').value.trim();
-            if (!input) {
-                alert('请输入有效的链接！');
-                return;
-            }
+  <script>
+    function generateLink() {
+      const input = document.getElementById('user-input').value.trim();
+      if (!input) {
+        alert('请输入有效的链接！');
+        return;
+      }
+      const acceleratedLink = window.location.origin + '/' + encodeURIComponent(input);
+      document.getElementById('accelerated-link').textContent = acceleratedLink;
+      document.getElementById('result').style.display = 'flex';
+    }
 
-            const acceleratedLink = `https://linksa.payvpp.top/${encodeURIComponent(input)}`;
-            document.getElementById('accelerated-link').textContent = acceleratedLink;
-            document.getElementById('result').style.display = 'flex';
-        }
-
-        function copyToClipboard() {
-            const linkText = document.getElementById('accelerated-link').textContent;
-            navigator.clipboard.writeText(linkText).then(() => {
-                alert('链接已复制到剪贴板！');
-            }).catch(err => {
-                alert('复制失败，请手动复制。');
-            });
-        }
-    </script>
+    function copyToClipboard() {
+      const linkText = document.getElementById('accelerated-link').textContent;
+      navigator.clipboard.writeText(linkText).then(() => {
+        alert('链接已复制到剪贴板！');
+      }).catch(err => {
+        alert('复制失败，请手动复制。');
+      });
+    }
+  </script>
 </body>
-
-</html>    
+</html>
